@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>String Checker</title>
+    <title>Master String Checker</title>
 </head>
 <body>
-    <form action="{{ route('checkStrings') }}" method="POST">
+    <h1>Master String Checker</h1>
+    <form action="/check-strings" method="POST">
         @csrf
-        <label for="master_string">Master String:</label>
-        <input type="text" id="master_string" name="master_string" required><br><br>
+        <label for="masterString">Master String:</label>
+        <input type="text" id="masterString" name="masterString" required><br><br>
 
-        <label for="string_1">String 1:</label>
-        <input type="text" id="string_1" name="string_1" required><br><br>
+        <label for="string1">String 1:</label>
+        <input type="text" id="string1" name="string1" required><br><br>
 
-        <label for="string_2">String 2:</label>
-        <input type="text" id="string_2" name="string_2" required><br><br>
+        <label for="string2">String 2:</label>
+        <input type="text" id="string2" name="string2" required><br><br>
 
-        <label for="string_3">String 3:</label>
-        <input type="text" id="string_3" name="string_3" required><br><br>
+        <label for="string3">String 3:</label>
+        <input type="text" id="string3" name="string3" required><br><br>
 
-        <label for="string_4">String 4:</label>
-        <input type="text" id="string_4" name="string_4" required><br><br>
+        <label for="string4">String 4:</label>
+        <input type="text" id="string4" name="string4" required><br><br>
 
         <button type="submit">Check Strings</button>
     </form>
-    @if (session('results'))
-    <h2>Results:</h2>
-    <ul>
-        @foreach (session('results') as $string => $result)
-            <li>{{ ucfirst($string) }} - {{ $result }}</li>
-        @endforeach
-    </ul>
-@endif
+
+    @if (isset($results))
+        <h2>Results:</h2>
+        <ul>
+            @foreach ($results as $key => $result)
+                <li>{{ $key }} - {{ $result }}</li>
+            @endforeach
+        </ul>
+    @endif
 </body>
 </html>
